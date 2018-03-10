@@ -15,8 +15,8 @@ help:
 targets: $(TARGETS) ## Builds all Go binaries, with OS configured for Prod (Linux)
 
 $(TARGETS):
-	@docker build -t madglory/cci-golang-$$(dirname $@) $$(dirname $@) && \
-	docker push madglory/cci-golang-$$(dirname $@):latest && \
+	@docker build -t madglory/cci-golang-$$(dirname $@):$$CONTAINERVERSION $$(dirname $@) && \
+	docker push madglory/cci-golang-$$(dirname $@):$$CONTAINERVERSION && \
 	touch $@;
 
 clean: ## Removes the .built mutex so we can recreate the files
